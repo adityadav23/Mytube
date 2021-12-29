@@ -13,11 +13,17 @@
         android:theme="@style/Theme.Mytube">
         <activity
             android:name=".CourseLesson"
-            android:exported="false" />
+            android:exported="false"
+            >
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".CourseDetailsActivity" />
+        </activity>
         <activity
             android:name=".CourseDetailsActivity"
             android:exported="false"
-            android:label="Course Details">
+            android:label="Course Details"
+            android:launchMode="singleTop">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />

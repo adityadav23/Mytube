@@ -18,7 +18,6 @@ class CourseLesson : AppCompatActivity() {
 
         if(link!=null) {
             courseLesson.loadUrl(link)
-
         }
     }
 }

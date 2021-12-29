@@ -30,10 +30,11 @@ class MainAdapter(val homeFeed: HomeFeed) : RecyclerView.Adapter<CustomViewHolde
         holder.videoTitle.text = video.name
         holder.channelName.text = video.channel.name +" - " + "${video.numberOfViews} views"+"\n 4 days ago"
         val channelImageUri = video.channel.profileImageUrl
-        Picasso.get().load(channelImageUri).into(holder.channelImage)
 
         val videoImageUri = video.imageUrl
         Picasso.get().load(videoImageUri).into(holder.videoImage)
+        Picasso.get().load(videoImageUri).into(holder.channelImage)
+
 
     }
 }
