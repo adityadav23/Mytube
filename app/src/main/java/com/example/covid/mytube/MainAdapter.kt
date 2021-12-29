@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.example.covid.mytube.Models.HomeFeed
 import com.example.covid.mytube.Models.Video
@@ -40,18 +41,20 @@ class MainAdapter(val homeFeed: HomeFeed) : RecyclerView.Adapter<CustomViewHolde
 class CustomViewHolder(view: View, var video: Video? = null) : RecyclerView.ViewHolder(view) {
    companion object{
        val VIDEO_TITLE_KEY ="VIDEO_TITLE"
+       val VIDEO_ID_KEY ="VIDEO_ID"
+
    }
     val videoImage: ImageView = view.findViewById(R.id.imageView_video_image)
     val channelImage: ImageView = view.findViewById(R.id.imageView_channel_profile_image)
     val videoTitle: TextView = view.findViewById(R.id.textView_video_title)
     val channelName: TextView = view.findViewById(R.id.textView_channel_name)
 
-
     init {
         view.setOnClickListener {
 
             val intent = Intent(view.context, CourseDetailsActivity::class.java)
             intent.putExtra(VIDEO_TITLE_KEY, video?.name)
+            intent.putExtra(VIDEO_ID_KEY, video?.id)
             view.context.startActivity(intent)
         }
     }
