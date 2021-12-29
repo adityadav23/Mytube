@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.covid.mytube.Models.HomeFeed
+import com.example.covid.mytube.Models.Video
 import com.squareup.picasso.Picasso
 
 class MainAdapter(val homeFeed: HomeFeed) : RecyclerView.Adapter<CustomViewHolder>() {
@@ -22,6 +23,8 @@ class MainAdapter(val homeFeed: HomeFeed) : RecyclerView.Adapter<CustomViewHolde
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
         val video = homeFeed.videos.get(position)
+        //Initializing video argument in CustomViewHolder
+        holder.video = video
 
         holder.videoTitle.text = video.name
         holder.channelName.text = video.channel.name +" - " + "${video.numberOfViews} views"+"\n 4 days ago"
@@ -34,7 +37,10 @@ class MainAdapter(val homeFeed: HomeFeed) : RecyclerView.Adapter<CustomViewHolde
     }
 }
 
-class CustomViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+class CustomViewHolder(view: View, var video: Video? = null) : RecyclerView.ViewHolder(view) {
+   companion object{
+       val VIDEO_TITLE_KEY ="VIDEO_TITLE"
+   }
     val videoImage: ImageView = view.findViewById(R.id.imageView_video_image)
     val channelImage: ImageView = view.findViewById(R.id.imageView_channel_profile_image)
     val videoTitle: TextView = view.findViewById(R.id.textView_video_title)
@@ -45,6 +51,7 @@ class CustomViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         view.setOnClickListener {
 
             val intent = Intent(view.context, CourseDetailsActivity::class.java)
+            intent.putExtra(VIDEO_TITLE_KEY, video?.name)
             view.context.startActivity(intent)
         }
     }
