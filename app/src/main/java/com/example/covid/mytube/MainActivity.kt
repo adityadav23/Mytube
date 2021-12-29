@@ -1,9 +1,10 @@
 package com.example.covid.mytube
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.covid.mytube.Models.HomeFeed
 import com.google.gson.GsonBuilder
 import okhttp3.*
 import java.io.IOException
@@ -47,15 +48,3 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-class HomeFeed(val videos: List<Video>){
-
-}
-class Video(val id: Int,
-            val name: String,
-            val  link: String,
-            val imageUrl: String,
-            val numberOfViews: Int,
-            val channel: Channel)
-
-class Channel(val name: String,
-              profileImageUrl: String)
